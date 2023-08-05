@@ -1,5 +1,4 @@
 import React from "react";
-import BLOG from "../BLOG.config";
 
 function Container({
   children,
@@ -10,11 +9,7 @@ function Container({
   customMeta?: {};
   className?: string;
 }) {
-  const meta = {
-    title: BLOG.title,
-    type: "website",
-    ...customMeta,
-  };
+
   return (
     <>
       <main
