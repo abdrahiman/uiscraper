@@ -114,11 +114,9 @@ export default function Extatore() {
         </label>
       </div>
       <div className="actions flex gap-4 ml-2 items-center ">
-        <Link href={{ pathname: "/", query: { q: "j" } }}>
-          <button onClick={handleAddChild} className="bg-white p-1 rounded-lg">
-            <IoMdAdd />
-          </button>
-        </Link>
+        <button onClick={handleAddChild} className="bg-white p-1 rounded-lg">
+          <IoMdAdd />
+        </button>
         <button
           onClick={handleRemoveChild}
           className="bg-white p-1 rounded-lg hover:bg-red-400"
