@@ -16,8 +16,8 @@ nav {
     padding: 0.4rem;
     border-radius: 50%;
     svg {
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1.3rem;
+      height: 1.3rem;
     }
   }
 }
@@ -54,23 +54,15 @@ nav {
     margin-bottom: 0.2rem;
   }
   textarea {
-    box-shadow: 0 0 0 1px var(--border-color, rgba(0, 0, 0, 0.08));
     border-radius: 1vmin;
     font-size: 0.93rem;
-    border: transparent 2px solid;
-    &:hover,
     &:focus {
-      border-color: black;
+      border-color: goldenrod;
     }
   }
   .code {
     background-color: rgba(0, 0, 0, 0.09);
     border-radius: 1vmin;
-    pre.data {
-      min-height: 10vh;
-      overflow: auto;
-      padding: 1rem;
-    }
     &:hover {
       button {
         opacity: 1;
@@ -134,32 +126,19 @@ nav {
     margin-bottom: 0.2rem;
   }
   > button {
-    border-radius: 6px;
     color: white;
     background: black;
     font-weight: 500;
-    padding: 0 12;
-    box-shadow: 0 0 0 1px var(--themed-border, transparent);
-    max-width: 100%;
-    width: 100px;
-    justify-content: center;
-    align-items: center;
-    transition-property: border-color, background, color, transform, box-shadow;
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    height: 40px;
   }
 }
 .template {
   width: 100%;
-  .extractor {
+  .selector {
     background-color: #f6f6f6;
     width: 100%;
     &:hover,
     &:focus {
-      background-color: #e9e9e9;
+      background-color: #ece9e9;
     }
     button {
       z-index: 10;
@@ -183,11 +162,9 @@ nav {
       border-radius: 0.7vmin;
       padding: 0.3rem 0px;
       padding-left: 0.5rem;
-      box-shadow: 0 0 0 1px var(--border-color, rgba(0, 0, 0, 0.08));
-      // box-shadow: 0 0 0 1px var(--border-color,var(--ds-gray-alpha-400));
-      outline: none;
-      &:hover {
-        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.34), 0 0 0 4px rgba(0, 0, 0, 0.16);
+      // outline: #ddd 1px solid;
+      &:focus {
+        outline: goldenrod 2px solid;
       }
     }
     .checkbox {
@@ -203,12 +180,17 @@ nav {
       }
       .bg {
         cursor: pointer;
-        background-color: white;
+        // background-color: black;
         &.checked {
+          border: none;
           background-color: black;
+          svg {
+            fill: gold;
+            opacity: 1;
+          }
         }
         svg {
-          fill: white;
+          opacity: 0;
         }
         overflow: hidden;
         justify-content: center;
@@ -231,13 +213,9 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-left: 0.2rem;
-    & > .extractor {
-      border-bottom-left-radius: 1px;
-    }
   }
   .hideChildren {
-    > .extractor {
+    > .selector {
       button.hide {
         svg {
           transform: rotate(180deg);
@@ -246,6 +224,7 @@ nav {
     }
     > .children {
       opacity: 0;
+      padding-left: 0.2rem;
       display: none;
     }
   }

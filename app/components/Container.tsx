@@ -9,11 +9,10 @@ function Container({
   customMeta?: {};
   className?: string;
 }) {
-
   return (
     <>
       <main
-        className={`flex-grow w-full transition-all flex h-full justify-start flex-col items-center px-4 max-w-7xl mx-auto
+        className={`flex-grow w-full mb-6 transition-all flex h-full justify-start flex-col items-center px-4 max-w-7xl mx-auto
          ${!className ? "" : className}`}
       >
         {children}
