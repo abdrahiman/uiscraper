@@ -29,6 +29,11 @@ npm run dev
 
 4. **Open your browser and visit `http://localhost:3000`**
 
+## 👀 Preview
+**Demo:** https://uiscraper.vercel.app
+![image](https://github.com/user-attachments/assets/7cf20d17-be17-42c4-b300-2cb5183df698)
+
+
 ## 📙 Usage
 1. **Enter the URL of the website you want to scrape.**
 2. **Use the visual selector tool to highlight the elements you want to extract data from.**
