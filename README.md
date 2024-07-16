@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+# UiScraper
+UiScraper is a user-friendly web application that simplifies the process of extracting data from websites. Built with Next.js, it provides an intuitive interface for defining selectors and effortlessly scraping the desired content.
+## Features
+- **Visual Selector Creation:** Easily define CSS selectors to target specific elements on a webpage.
+- **Nested Selectors:**  Support for extracting data from nested elements within a parent container.
+- **Array Extraction:**  Efficiently scrape lists of data by defining selectors as arrays.
+- **Attribute Targeting:**  Option to extract specific attributes (e.g., 'src', 'href') from selected elements.
+- **Real-time Preview:**  Instantly see the scraped data as you adjust your selectors.
+- **Code Generation:**  Generate code snippets in popular languages (e.g., Python, Node.js) for easy integration into your projects.
 ## Getting Started
-
-First, run the development server:
-
+1. **Clone the repository:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/abdrahiman/uiscraper.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Install dependencies:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd uiscraper && npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+3. **Start the development server:**
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Open your browser and visit `http://localhost:3000`**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
+1. **Enter the URL of the website you want to scrape.**
+2. **Use the visual selector tool to highlight the elements you want to extract data from.**
+3. **Configure the selectors by specifying their names, types (array or single), and optional attributes.**
+4. **Click "Scrape" to preview the extracted data.**
+5. **Copy the generated code snippet to integrate the scraping logic into your own applications.**
 
-## Deploy on Vercel
+## Technologies Used
+- **Next.js:**  React framework for server-side rendering and static site generation.
+- **Tailwind CSS:**  Utility-first CSS framework for rapid UI development.
+- **jsdom:**  Fast and flexible HTML parser for Node.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
+Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the MIT License.
+
+---
+Give a ⭐️ if this project helped you :)
+
+
