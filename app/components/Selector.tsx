@@ -147,7 +147,7 @@ export default function Selector({
       {data.children.length != 0 && (
         <div className="children">
           {data.children.map((child) => (
-            <div className="child">
+            <div className="child" key={child.id}>
               <Selector
                 selectors={selectors}
                 setSelectors={setSelectors}

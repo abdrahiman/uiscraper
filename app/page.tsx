@@ -90,6 +90,7 @@ export default function Index() {
           <div className="template flex flex-col gap-4 mt-4">
             {selectors.map((s) => (
               <Selector
+                key={s.id}
                 selectors={selectors}
                 setSelectors={setSelectors}
                 data={s}
