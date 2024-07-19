@@ -80,7 +80,7 @@ const expandUrls = (urls: string[]): string[] => {
     );
   } else {
     const min = parseInt(maxStr.split("=>")[0]);
-    const max = parseInt(maxStr.split("=>")[1]);
+    const max = parseInt(maxStr.split("=>")[1].split("}")[0]);
     if (isNaN(max) || isNaN(min)) throw new Error("Invalid max or min value");
     return Array.from({ length: max - min + 1 }, (_, idx) => {
       const i = min + idx;

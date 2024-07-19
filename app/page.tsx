@@ -9,6 +9,7 @@ import Code from "./components/code";
 export default function Index() {
   let [data, setData] = useState<string | null>("");
   let [urls, setUrls] = useState("");
+  let [isPtr, setPtr] = useState(true);
 
   let [selectors, setSelectors] = useState<ISelector[]>([]);
   let [localIsLoaded, setlocalIsLoaded] = useState(false);
@@ -40,7 +41,7 @@ export default function Index() {
       urls: urls.split(",").map((e: string) => e.trim()),
     });
 
-    let response = await fetch("/api/scrape", {
+    let response = await fetch(`/api/${isPtr ? "ptr" : "dom"}`, {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -68,10 +69,10 @@ export default function Index() {
       <div className="w-full gap-6 flex flex-row pt-2 max-md:flex-col">
         <section className="w-full create flex flex-col">
           <div className="flex flex-row justify-between items-center">
-            <label htmlFor="">Schema</label>
+            <label htmlFor="">Schema </label>
             <div className="flex flex-row items-center gap-2">
               <button
-                className="p-2 text-sm mt-4 w-fit rounded-lg bg-[#f0f0f0]"
+                className="p-2 text-sm w-fit rounded-lg bg-[#f0f0f0]"
                 onClick={handleAdd}
                 title="Add Selector"
               >
@@ -79,10 +80,19 @@ export default function Index() {
               </button>
               <button
                 title="Delete All !!"
-                className="p-2 text-sm mt-4 w-fit rounded-lg bg-[#f0f0f0] hover:bg-red-600"
+                className="p-2 text-sm w-fit rounded-lg bg-[#f0f0f0] hover:bg-red-600"
                 onClick={() => setSelectors([])}
               >
                 <FiTrash />
+              </button>
+              <button
+                title="Puppetter !!"
+                className={`p-2 text-sm w-fit rounded-lg bg-[#f0f0f0] hover:bg-green-200 ${
+                  isPtr ? " bg-green-500 text-white hover:bg-green-700" : ""
+                }`}
+                onClick={() => setPtr(!isPtr)}
+              >
+                Puppetter
               </button>
             </div>
           </div>

@@ -21,7 +21,7 @@ export default function Nav() {
           </div>
         </Link>
         <div className="font-bold">
-          <span className="text-amber-500">Ui</span>Scrape
+          <span className="text-amber-500">Ui</span>Scraper
         </div>
       </div>
     </nav>

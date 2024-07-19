@@ -106,7 +106,7 @@ let bodyContent = ${JSON.stringify({
                   urls: urls.split(",").map((e: string) => e.trim()),
                 })}
 
-let response = await fetch("https://perfrico.vercel.app/api/scrape", {
+let response = await fetch("https://uiscraper.vercel.app/api/scrape", {
     method: "POST",
     body: bodyContent,
     headers: headersList,
