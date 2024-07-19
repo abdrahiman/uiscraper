@@ -9,7 +9,7 @@ import Code from "./components/code";
 export default function Index() {
   let [data, setData] = useState<string | null>("");
   let [urls, setUrls] = useState("");
-  let [isPtr, setPtr] = useState(true);
+  let [isPtr, setPtr] = useState(false);
 
   let [selectors, setSelectors] = useState<ISelector[]>([]);
   let [localIsLoaded, setlocalIsLoaded] = useState(false);
