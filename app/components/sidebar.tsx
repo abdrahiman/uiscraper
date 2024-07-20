@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { IoMdTrash } from "react-icons/io";
 import { useWorkspace } from "../lib/workspaces";
 
-export default function WorkSpaces() {
+export default function WorkSpacesSideBar() {
   let p = useSearchParams();
   let { workspaces, setWorkspaces } = useWorkspace();
   let addWorkSpace = () => {
@@ -14,7 +14,7 @@ export default function WorkSpaces() {
       urls: "https://exemple.com",
       template: [],
       data: "",
-      isPuppetter:false
+      isPuppetter: false,
     });
     setWorkspaces([...temp]);
   };
