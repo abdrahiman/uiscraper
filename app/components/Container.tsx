@@ -1,23 +1,14 @@
+"use client";
 import React from "react";
+import { WorkspaceProvider } from "../lib/workspaces";
 
-function Container({
+function Providers({
   children,
-  customMeta,
-  className,
 }: {
   children: any;
   customMeta?: {};
   className?: string;
 }) {
-  return (
-    <>
-      <main
-        className={`flex-grow w-full mb-6 transition-all flex h-full justify-start flex-col items-center px-4 max-w-7xl mx-auto
-         ${!className ? "" : className}`}
-      >
-        {children}
-      </main>
-    </>
-  );
+  return <WorkspaceProvider>{children}</WorkspaceProvider>;
 }
-export default Container;
+export default Providers;
