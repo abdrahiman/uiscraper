@@ -2,8 +2,7 @@ import { ISelector } from "@/app/components/Selector";
 import { AxiosError } from "axios";
 import pLimit from "p-limit";
 import * as puppeteer from "puppeteer";
-import { exec } from "node:child_process";
-import { promisify } from "node:util";
+
 
 export const GET = () => Response.json("Hello");
 
@@ -109,12 +108,10 @@ const processBatches = async (urls: string[], template: ISelector[]) => {
   const batchSize = 10;
   const limit = pLimit(5);
   const results: any[] = [];
-  const { stdout: chromiumPath } = await promisify(exec)("which chromium");
 
   const browser = await puppeteer.launch({
     headless: "new" as any,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    executablePath: chromiumPath.trim(),
   });
 
   try {
