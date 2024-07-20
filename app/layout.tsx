@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./styles/globals.scss";
+import "./globals.css";
 import Container from "./components/Container";
 import Nav from "./components/nav";
 
