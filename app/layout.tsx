@@ -25,8 +25,8 @@ export default function RootLayout({
           <div className="flex gap-4 flex-row w-full">
             <Suspense>
               <WorkSpacesSideBar />
+              {children}
             </Suspense>
-            {children}
           </div>
         </Providers>
       </body>
