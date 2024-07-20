@@ -6,10 +6,12 @@ import JsonFormatter from "react-json-formatter";
 export default function Code({
   selectors,
   data,
+  isLoading,
   urls,
 }: {
   selectors: ISelector[];
   data: string | null;
+  isLoading: boolean;
   urls: string;
 }) {
   let DownloadAsJson = () => {
@@ -47,14 +49,18 @@ export default function Code({
   return (
     <>
       <div className="code">
-        {data ? (
+        {!isLoading ? (
           <div className="data p-2 max-h-[40vh] text-sm overflow-auto">
             <button onClick={handleCopy}>
               <BiCopy />
             </button>
-            <JsonFormatter json={data} jsonStyle={jsonStyle} tabWith={4} />
+            <JsonFormatter
+              json={data || "{}"}
+              jsonStyle={jsonStyle}
+              tabWith={4}
+            />
           </div>
-        ) : data == null ? (
+        ) : (
           <div
             role="status"
             className="w-full h-full flex justify-center items-center p-4"
@@ -77,8 +83,6 @@ export default function Code({
             </svg>
             <span className="sr-only">Loading...</span>
           </div>
-        ) : (
-          ""
         )}
       </div>
       <button
