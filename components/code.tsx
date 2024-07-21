@@ -5,9 +5,6 @@ import JsonFormatter from "react-json-formatter";
 import { JsonIcon } from "./custom/icons";
 import CsvDownloadButton from "react-json-to-csv";
 
-import { useEffect, useState } from "react";
-import { FileIcon } from "@radix-ui/react-icons";
-
 interface CodeProps {
   selectors: ISelector[];
   data: string | null;
