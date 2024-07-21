@@ -1,38 +1,31 @@
-'use client';
+"use client";
 import { BiCopy } from "react-icons/bi";
 import { ISelector } from "./Selector";
-import { VscJson } from "react-icons/vsc";
 import JsonFormatter from "react-json-formatter";
 import { JsonIcon } from "./custom/icons";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { useEffect, useState } from "react";
-import { FileIcon } from "@radix-ui/react-icons";
+import CsvDownloadButton from "react-json-to-csv";
 
 interface CodeProps {
-    selectors: ISelector[];
-    data: string | null;
-    isLoading: boolean;
-    urls: string;
+  selectors: ISelector[];
+  data: string | null;
+  isLoading: boolean;
+  urls: string;
 }
 
-export default function Code({
-  selectors,
-  data,
-  isLoading,
-  urls,
-}:CodeProps) {
-
-  const [select , setSelect] = useState("")
-
+export default function Code({ selectors, data, isLoading, urls }: CodeProps) {
   const handleSelect = (e: any) => {
-    setSelect(e)
-  }
+    let select = e.target.value;
+    console.log(select);
+    if (select === "json") {
+      saveAs(data as string, "json");
+    }
+    if (select === "txt") {
+      saveAs(data as string, "txt");
+    }
+    if (select === "csv") {
+      saveAs(data as string, "csv");
+    }
+  };
   let handleCopy = (e: any) => {
     let Btn = e.target as HTMLElement;
     if (data) {
@@ -48,12 +41,21 @@ export default function Code({
     numberStyle: { color: "darkred" },
   };
 
-  // lets make a function save the data as a file based on the selected format 
-
+  // lets make a function save the data as a file based on the selected format
   const saveAs = (data: string, format: string) => {
+    if (format == "csv") {
+      console.log(JSON.parse(data));
+      let btn: HTMLElement | null = document.querySelector("#download_as_csv");
+      if (btn) {
+        btn.click();
+      }
+      return;
+    }
     // create file in browser
     const fileName = "scraped_data";
-    const blob = new Blob([data as BlobPart], { type: `application/${format}` });
+    const blob = new Blob([data as BlobPart], {
+      type: `application/${format}`,
+    });
     const href = URL.createObjectURL(blob);
 
     // create "a" HTML element with href to file
@@ -66,22 +68,16 @@ export default function Code({
     // clean up "a" element & remove ObjectURL
     document.body.removeChild(link);
     URL.revokeObjectURL(href);
-    }
-    // lets make a function to save the data as a file based on the selected format
+  };
 
-    useEffect(() => {
-        if(select === "json"){
-            saveAs(data as string, "json")
-        }
-        if(select === "text"){
-            saveAs(data as string, "text")
-        }
-        if(select === "csv"){
-            saveAs(data as string, "csv")
-        }
-        }, [select])
   return (
     <>
+      <CsvDownloadButton
+        data={JSON.parse(data || "{}")}
+        id="download_as_csv"
+        filename="scraped_data"
+        className="opacity-0 pointer-events-none h-0 w-0"
+      />
       <div className="code">
         {!isLoading ? (
           <div className="data p-2 max-h-[40vh] text-sm overflow-auto">
@@ -99,37 +95,31 @@ export default function Code({
             role="status"
             className="w-full h-full flex justify-center items-center p-4"
           >
-            <JsonIcon/>
+            <JsonIcon />
             <span className="sr-only">Loading...</span>
           </div>
         )}
       </div>
       <div className="w-52">
-      <Select
-      onValueChange={handleSelect}
-    >
-        <SelectTrigger
-        className="flex items-center "
+        <select
+          defaultValue={""}
+          onInput={handleSelect}
+          className="flex items-center bg-amber-400 outline-none px-12 py-2 rounded-md text-black"
         >
-            
-              <div className="flex justify-center items-center gap-2 text-green-400">
-              <FileIcon/>
-              {select === "" ? "Download As" : select}
-              </div>
-           
-        </SelectTrigger>
-        <SelectContent>
-            <SelectItem
-            value="json"
-            >Json</SelectItem>
-            <SelectItem
-            value="text"
-            >Text</SelectItem>
-            <SelectItem
-            value="csv"
-            >CSV</SelectItem>
-        </SelectContent>
-    </Select>
+          <option value="" hidden className="bg-white border-none py-4">
+            Download As
+          </option>
+          <option value="csv" className="bg-white border-none py-4 shadow-none">
+            Csv
+          </option>
+
+          <option value="txt" className="bg-white border-none py-4">
+            Text
+          </option>
+          <option value="json" className="bg-white border-none py-4">
+            Json
+          </option>
+        </select>
       </div>
       {selectors.length !== 0 && (
         <div className="api w-full">

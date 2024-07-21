@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ISelector } from "../components/Selector";
+import { ISelector } from "@/components/Selector";
 
 export interface IWorkspace {
   urls: string;
@@ -12,14 +12,20 @@ export interface IWorkspace {
 export const WorkspaceContext = createContext<{
   workspaces: IWorkspace[];
   setWorkspaces: (w: IWorkspace[]) => void;
+  isSideBarMax: boolean;
+  setSideBar: (w: boolean) => void;
 }>({
   workspaces: [{ urls: "", template: [], data: "", isPuppetter: false }],
   setWorkspaces: (w) => {},
+  setSideBar: (v) => {},
+  isSideBarMax:true,
 });
 
 export const WorkspaceProvider = ({ children }: { children: any }) => {
+    let [isSideBarMax, setSideBar] = useState(true);
+
   let [workspaces, setWorkspaces] = useState<IWorkspace[]>([
-    { urls: "", template: [], data: "", isPuppetter: false },
+    { urls: "https://exemple.com", template: [], data: "", isPuppetter: false },
   ]);
   let [localIsLoaded, setlocalIsLoaded] = useState(false);
   useEffect(() => {
@@ -38,7 +44,7 @@ export const WorkspaceProvider = ({ children }: { children: any }) => {
 
   return (
     <>
-      <WorkspaceContext.Provider value={{ workspaces, setWorkspaces }}>
+      <WorkspaceContext.Provider value={{ workspaces, setWorkspaces,isSideBarMax,setSideBar }}>
         {children}
       </WorkspaceContext.Provider>
     </>
