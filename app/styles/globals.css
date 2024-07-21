@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("./home.css");
 
 @layer base {
   :root {
@@ -66,4 +67,31 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --scrollbarBG: #ffffff00;
+  --thumbBG: #;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+*::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+}
+*::selection {
+  background: black;
+  color: white;
 }

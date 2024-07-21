@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { WorkspaceProvider } from "../lib/workspaces";
+import { WorkspaceProvider } from "@/lib/workspaces";
 
 function Providers({
   children,

@@ -1,8 +1,7 @@
-import { ISelector } from "@/app/components/Selector";
+import { ISelector } from "@/components/Selector";
 import { AxiosError } from "axios";
 import pLimit from "p-limit";
 import * as puppeteer from "puppeteer";
-
 
 export const GET = () => Response.json("Hello");
 

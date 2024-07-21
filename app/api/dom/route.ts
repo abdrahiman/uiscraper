@@ -1,9 +1,7 @@
-import { ISelector } from "@/app/components/Selector";
+import { ISelector } from "@/components/Selector";
 import axios, { AxiosError } from "axios";
 import { JSDOM } from "jsdom";
 import pLimit from "p-limit";
-
-export const GET = () => Response.json("Hello");
 
 export const POST = async (req: Request) => {
   try {

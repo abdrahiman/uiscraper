@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
-import "./styles/globals.scss";
-import "./globals.css";
-import WorkSpacesSideBar from "./components/sidebar";
-import Providers from "./components/Container";
+import "./styles/globals.css";
+import WorkSpacesSideBar from "@/components/sidebar";
+import Providers from "@/components/providers";
 import { Suspense } from "react";
 
 const inter = Lexend({ subsets: ["latin"] });
@@ -23,12 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="flex gap-4 flex-row w-full">
-            <Suspense>
+          <Suspense>
+            <div className="flex gap-4 flex-row w-full">
               <WorkSpacesSideBar />
               {children}
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
         </Providers>
       </body>
     </html>
