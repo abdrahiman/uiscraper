@@ -17,27 +17,16 @@ import { FileIcon } from "@radix-ui/react-icons";
 interface CodeProps {
     selectors: ISelector[];
     data: string | null;
+    isLoading: boolean;
     urls: string;
 }
 
-export default function Code({selectors,data,urls,}:CodeProps) {
-  let DownloadAsJson = () => {
-    // create file in browser
-    const fileName = "scraped_data";
-    const blob = new Blob([data as BlobPart], { type: "application/json" });
-    const href = URL.createObjectURL(blob);
-
-    // create "a" HTML element with href to file
-    const link = document.createElement("a");
-    link.href = href;
-    link.download = fileName + ".json";
-    document.body.appendChild(link);
-    link.click();
-
-    // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
-  };
+export default function Code({
+  selectors,
+  data,
+  isLoading,
+  urls,
+}:CodeProps) {
 
   const [select , setSelect] = useState("")
 
@@ -94,14 +83,18 @@ export default function Code({selectors,data,urls,}:CodeProps) {
   return (
     <>
       <div className="code">
-        {data ? (
+        {!isLoading ? (
           <div className="data p-2 max-h-[40vh] text-sm overflow-auto">
             <button onClick={handleCopy}>
               <BiCopy />
             </button>
-            <JsonFormatter json={data} jsonStyle={jsonStyle} tabWith={4} />
+            <JsonFormatter
+              json={data || "{}"}
+              jsonStyle={jsonStyle}
+              tabWith={4}
+            />
           </div>
-        ) : data == null ? (
+        ) : (
           <div
             role="status"
             className="w-full h-full flex justify-center items-center p-4"
@@ -109,8 +102,6 @@ export default function Code({selectors,data,urls,}:CodeProps) {
             <JsonIcon/>
             <span className="sr-only">Loading...</span>
           </div>
-        ) : (
-          ""
         )}
       </div>
       <div className="w-52">
