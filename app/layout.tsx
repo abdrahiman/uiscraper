@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./styles/globals.scss";
+import "./globals.css";
 import WorkSpacesSideBar from "./components/sidebar";
 import Providers from "./components/Container";
 import { Suspense } from "react";
