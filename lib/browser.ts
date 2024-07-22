@@ -1,4 +1,6 @@
-export const dynamic = "force-dynamic";
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+puppeteer.use(StealthPlugin());
 
 const CHROMIUM_PATH =
   "https://vomrghiulbmrfvmhlflk.supabase.co/storage/v1/object/public/chromium-pack/chromium-v123.0.0-pack.tar";
@@ -28,9 +30,10 @@ export async function getBrowser() {
       throw err;
     }
   } else {
-    const puppeteer = await import("puppeteer").then((mod) => mod.default);
-
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     return browser;
   }
 }
