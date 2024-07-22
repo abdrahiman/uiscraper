@@ -2,8 +2,8 @@ import { ISelector } from "@/components/Selector";
 import { AxiosError } from "axios";
 import pLimit from "p-limit";
 import * as puppeteer from "puppeteer";
-
-export const GET = () => Response.json("Hello");
+import { getBrowser } from "@/lib/browser";
+import { Browser } from "puppeteer";
 
 export const POST = async (req: Request) => {
   try {
@@ -108,10 +108,7 @@ const processBatches = async (urls: string[], template: ISelector[]) => {
   const limit = pLimit(5);
   const results: any[] = [];
 
-  const browser = await puppeteer.launch({
-    headless: "new" as any,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = (await getBrowser()) as Browser;
 
   try {
     for (let i = 0; i < urls.length; i += batchSize) {
