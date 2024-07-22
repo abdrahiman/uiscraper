@@ -104,7 +104,7 @@ export default function Code({ selectors, data, isLoading, urls }: CodeProps) {
         <select
           defaultValue={""}
           onInput={handleSelect}
-          className="flex items-center bg-amber-400 outline-none px-12 py-2 rounded-md text-black"
+          className="flex items-center bg-[#f7d92e] outline-none px-12 py-2 rounded-md text-black"
         >
           <option value="" hidden className="bg-white border-none py-4">
             Download As

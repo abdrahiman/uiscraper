@@ -57,7 +57,7 @@ nav .logo svg {
   font-size: 0.93rem;
 }
 .see textarea:focus {
-  border-color: goldenrod;
+  border-color: #daa520;
 }
 .see .code {
   background-color: #ddd;
@@ -190,7 +190,7 @@ nav .logo svg {
   background-color: black;
 }
 .template .selector .checkbox .bg.checked svg {
-  fill: gold;
+  fill: #ffd700;
   opacity: 1;
 }
 .template .selector .checkbox .bg svg {
