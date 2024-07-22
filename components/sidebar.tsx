@@ -36,7 +36,7 @@ export default function WorkSpacesSideBar() {
     <>
       {isMax || isHovered ? (
         <aside
-          className="max-w-[250px] fixed left-0 top-0 py-4 px-2 z-30 w-full bg-gray-100 h-screen flex-col gap-4"
+          className="max-w-[250px] fixed left-0 top-0 py-4 px-2 z-30 w-full bg-[#f8f8f8] h-screen flex-col gap-4"
           onMouseLeave={() => isHovered && setHovered(false)}
         >
           <div className="flex flex-row justify-between items-center">
@@ -47,7 +47,7 @@ export default function WorkSpacesSideBar() {
                 </div>
               </Link>
               <div className="font-bold">
-                <span className="text-amber-500">Ui</span>Scraper
+                <span className="text-amber-300">Ui</span>Scraper
               </div>
             </div>
             <button
@@ -59,20 +59,20 @@ export default function WorkSpacesSideBar() {
           </div>
           <div className="workspacs flex flex-col gap-2 w-full mt-12">
             <button
-              className="rounded-lg bg-orange-300 px-4 py-2 text-sm"
+              className="rounded-lg bg-black text-white px-2 py-2 text-sm"
               onClick={addWorkSpace}
             >
               Create new workspace
             </button>
-            <h3 className="mb-2">Workspaces</h3>
+            <h3 className="mt-4 mb-2">Workspaces</h3>
             {workspaces.map((workspace, i) => (
               <Link
                 href={"/?workspace=" + i}
                 key={i}
                 className={`workspace py-2 px-2 w-full justify-between items-center rounded-lg flex flex-row ${
                   parseInt(p.get("workspace") || "0") == i
-                    ? "bg-orange-400"
-                    : ""
+                    ? "bg-[#f7d92e]"
+                    : "bg-[#dddddd5e]"
                 }`}
               >
                 <p className="text-ellipsis max-w-full text-nowrap overflow-hidden text-sm">
@@ -92,11 +92,11 @@ export default function WorkSpacesSideBar() {
         </aside>
       ) : (
         <aside
-          className="max-w-[50px] fixed left-0 top-0 py-4 px-2 w-full bg-gray-100 h-screen flex-col gap-4 items-center"
+          className="max-w-[50px] fixed left-0 top-0 py-4 px-2 w-full bg-[#f8f8f8] h-screen flex-col gap-4 items-center "
           onMouseEnter={() => setHovered(true)}
         >
-          <div className="logo flex flex-row gap-2 items-center w-full">
-            <Link href="/" className="w-full">
+          <div className="logo flex flex-row gap-2 items-center w-full justify-center">
+            <Link href="/" className="">
               <Logo />
             </Link>
           </div>
