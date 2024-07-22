@@ -5,23 +5,28 @@ const CHROMIUM_PATH =
 
 export async function getBrowser() {
   if (process.env.VERCEL_ENV === "production") {
-    const chromium = await import("@sparticuz/chromium-min").then(
-      (mod) => mod.default
-    );
+    try {
+      const chromium = await import("@sparticuz/chromium-min").then(
+        (mod) => mod.default
+      );
 
-    const puppeteerCore = await import("puppeteer-core").then(
-      (mod) => mod.default
-    );
+      const puppeteerCore = await import("puppeteer-core").then(
+        (mod) => mod.default
+      );
 
-    const executablePath = await chromium.executablePath(CHROMIUM_PATH);
+      const executablePath = await chromium.executablePath(CHROMIUM_PATH);
 
-    const browser = await puppeteerCore.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath,
-      headless: chromium.headless,
-    });
-    return browser;
+      const browser: any = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath,
+        headless: chromium.headless as any,
+      });
+      return browser;
+    } catch (err: any) {
+      console.log(err.message);
+      throw err;
+    }
   } else {
     const puppeteer = await import("puppeteer").then((mod) => mod.default);
 

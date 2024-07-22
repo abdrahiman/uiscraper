@@ -3,7 +3,6 @@ import { AxiosError } from "axios";
 import pLimit from "p-limit";
 import * as puppeteer from "puppeteer";
 import { getBrowser } from "@/lib/browser";
-import { Browser } from "puppeteer";
 
 export const POST = async (req: Request) => {
   try {
@@ -108,7 +107,7 @@ const processBatches = async (urls: string[], template: ISelector[]) => {
   const limit = pLimit(5);
   const results: any[] = [];
 
-  const browser = (await getBrowser()) as Browser;
+  const browser = await getBrowser();
 
   try {
     for (let i = 0; i < urls.length; i += batchSize) {
